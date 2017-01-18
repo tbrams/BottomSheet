@@ -9,10 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "TBR:";
     CoordinatorLayout coordinatorLayout;
     private BottomSheetBehavior<View> mBottomSheetBehavior;
     private TextView textView;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.lblName);
         View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);
 
         //For your bottom sheet to be displayable, you need to create a BottomSheetBehavior.
@@ -34,21 +34,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
                     case BottomSheetBehavior.STATE_DRAGGING:
+                        Log.d(TAG, "onStateChanged: Dragging");
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         mBottomSheetBehavior.setPeekHeight(0);
+                        Log.d(TAG, "onStateChanged: Collapsed");
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
+                        Log.d(TAG, "onStateChanged: Expanded");
                         break;
                     case BottomSheetBehavior.STATE_HIDDEN:
+                        Log.d(TAG, "onStateChanged: Hidden");
                         break;
                     case BottomSheetBehavior.STATE_SETTLING:
+                        Log.d(TAG, "onStateChanged: Settling");
                         break;
                 }
             }
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                Log.d(TAG, "onSlide: pnSlide");
             }
         });
 
@@ -74,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  * To do this, get the view from getLayoutInflater and pass it setContentView of the Dialog.
                  */
                 View view = getLayoutInflater().inflate(R.layout.bottom_sheet_layout, null);
-                TextView textView = (TextView) view.findViewById(R.id.textView);
+                TextView textView = (TextView) view.findViewById(R.id.lblName);
                 textView.setText(R.string.dialog_modal_txt);
                 BottomSheetDialog dialog = new BottomSheetDialog(this);
                 dialog.setContentView(view);

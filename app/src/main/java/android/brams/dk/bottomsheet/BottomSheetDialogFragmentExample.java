@@ -5,16 +5,20 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class BottomSheetDialogFragmentExample extends BottomSheetDialogFragment {
+    public static final String TAG = "TBR:";
 
     private BottomSheetBehavior.BottomSheetCallback mBottomSheetBehaviorCallback = new BottomSheetBehavior.BottomSheetCallback() {
 
         @Override
         public void onStateChanged(@NonNull View bottomSheet, int newState) {
             if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                // Get rid of the fragment when the dialog is hidden
                 dismiss();
             }
 
@@ -34,10 +38,18 @@ public class BottomSheetDialogFragmentExample extends BottomSheetDialogFragment 
     @Override
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
-        View contentView = View.inflate(getContext(), R.layout.bottom_sheet_layout, null);
-        TextView textView = (TextView) contentView.findViewById(R.id.textView);
-        textView.setText(R.string.dialog_fragment_modal_txt);
+        final Dialog d=dialog;
+        View contentView = View.inflate(getContext(), R.layout.bottom_sheet_layout_2, null);
         dialog.setContentView(contentView);
+
+        Button btnUpd = (Button) contentView.findViewById(R.id.btnUPD);
+        btnUpd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: ");
+                d.hide();
+            }
+        });
 
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
         CoordinatorLayout.Behavior behavior = params.getBehavior();
