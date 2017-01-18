@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BottomSheet</string>
+    <string name="guide"><b>Update Fields</b>\n\nThis is where you can update the place name and add a short note if relevant. Also, if you would rather swipe through all details on you entire route, please press "All Details"</string>
+    <string name="static_persistent_txt">Persistent Bottom Sheet from XML</string>
+    <string name="dynamic_persistent_txt">Dynamic Persistent Bottom Sheet</string>
+    <string name="dialog_modal_txt">Modal Bottom Sheet from Dialog</string>
+    <string name="dialog_fragment_modal_txt">Modal Bottom Sheet from DialogFragment</string>
+    <string name="ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+
+</resources>
