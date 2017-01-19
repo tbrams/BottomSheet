@@ -1,13 +1,17 @@
 package android.brams.dk.bottomsheet;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 public class BottomSheetDialogFragmentExample extends BottomSheetDialogFragment {
@@ -54,8 +58,26 @@ public class BottomSheetDialogFragmentExample extends BottomSheetDialogFragment 
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
         CoordinatorLayout.Behavior behavior = params.getBehavior();
 
-        if (behavior != null && behavior instanceof BottomSheetBehavior) {
-            ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
-        }
+     }
+
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) dialog;
+                final FrameLayout bottomSheet = (FrameLayout) ((BottomSheetDialog) dialog).findViewById(android.support.design.R.id.design_bottom_sheet);
+                final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+                bottomSheetBehavior.setBottomSheetCallback(mBottomSheetBehaviorCallback);
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                bottomSheetBehavior.setPeekHeight(600);
+            }
+        });
+
+
+        return dialog;
     }
 }
