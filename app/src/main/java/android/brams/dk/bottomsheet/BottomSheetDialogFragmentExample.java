@@ -73,7 +73,7 @@ public class BottomSheetDialogFragmentExample extends BottomSheetDialogFragment 
                 final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
                 bottomSheetBehavior.setBottomSheetCallback(mBottomSheetBehaviorCallback);
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                bottomSheetBehavior.setPeekHeight(600);
+                bottomSheetBehavior.setPeekHeight(550);
             }
         });
 
